@@ -23,18 +23,22 @@ class ViewController: UIViewController {
 
     
     @objc func buttonDidTap() {
-        //abreview
+        // Main View
         let mainView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        mainView.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
+        mainView.backgroundColor = UIColor.gray
+        mainView.alpha = 0.0
         
+        // Card View
         let cardView = UIView(frame: CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height * 0.2))
         cardView.backgroundColor = .white
         
+        // Add views to view mother
         self.view.addSubview(mainView)
         self.view.addSubview(cardView)
         
+        // Animate all
         UIView.animate(withDuration: 1.3, animations: {
-            self.view.layoutIfNeeded()
+            mainView.alpha = 0.7
         }, completion: { (finished) in
             if finished {
                 UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseOut, animations: {
@@ -42,7 +46,6 @@ class ViewController: UIViewController {
                 }, completion: nil)
             }
         })
-
     }
 }
 
